@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
+using System.Net.Mail;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace TestWpf
 {
@@ -23,6 +13,28 @@ namespace TestWpf
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void SendButton_Click(object sender, RoutedEventArgs e)
+        {
+            var from = new MailAddress(SenderEdit.Text);
+            var to = new MailAddress(AddresseeEdit.Text);
+
+            var message = new MailMessage(from, to);
+            message.Subject = ItemEdit.Text;
+            message.Body = MailEdit.Text;
+
+            var client = new SmtpClient(AddressComboBox.Text, Convert.ToInt32(PortEdit.Text));
+            client.EnableSsl = true;
+
+            client.Credentials = new NetworkCredential
+            {
+                UserName = TextEdit.Text,
+                SecurePassword =PasswordEdit.SecurePassword
+            };
+
+            EmailSendServiceClass E = new EmailSendServiceClass(client, message);
+            E.SendMail();
         }
     }
 }
