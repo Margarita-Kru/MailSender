@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:im="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -33,9 +34,14 @@
                                 <ComboBoxItem>smtp.mail.ru:465</ComboBoxItem>
                                 <ComboBoxItem>smtp.gmail.com:587</ComboBoxItem>
                             </ComboBox>
-                            <Button>Добавить</Button>
-                            <Button>Редактировать</Button>
-                            <Button>Убавить</Button>
+                            <Button>
+                                <StackPanel Orientation="Horizontal">
+                                    <im:ImageAwesome Height="12" Icon="Solid_PlusCircle" Foreground="Green" Margin="0,0,5,0"/>
+                                    <TextBlock Text="Добавить" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                            <Button ToolTip="Редактировать" im:Awesome.Content="Solid_Edit" Foreground="Purple"/>
+                            <Button ToolTip="Удалить" im:Awesome.Content="Solid_TrashAlt" Foreground="Red"/>
                         </ToolBar>
                         <ToolBar Header="Отправители" Band="1">
                             <ComboBox MaxWidth="200" MinWidth="120" SelectedIndex="0">
@@ -43,18 +49,25 @@
                                 <ComboBoxItem>ivanov@yandex.ru</ComboBoxItem>
                                 <ComboBoxItem>nerov@gmail.com</ComboBoxItem>
                                 </ComboBox>
-                                <Button>Добавить</Button>
-                                <Button>Редактировать</Button>
-                                <Button>Убавить</Button>
-                            </ToolBar>
+                            <Button>
+                                <StackPanel Orientation="Horizontal">
+                                    <im:ImageAwesome Height="12" Icon="Solid_PlusCircle" Foreground="Green" Margin="0,0,5,0"/>
+                                    <TextBlock Text="Добавить" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                            <Button ToolTip="Редактировать" im:Awesome.Content="Solid_Edit" Foreground="Purple"/>
+                            <Button ToolTip="Удалить" im:Awesome.Content="Solid_TrashAlt" Foreground="Red"/>
+                        </ToolBar>
                         <ToolBar>
                             <TextBlock VerticalAlignment="Center" Text="Перейти в планировщик"/>
-                            <Button>Перейти</Button>
+                            <Button im:Awesome.Content="Regular_Clock" Foreground="Tan"/>
                         </ToolBar>
                         <ToolBar Band="1" Header="Получатели">
-                            <Button Content="Создать"/>
-                            <Button Content="Редактировать"/>
-                            <Button Content="Удалить"/>
+                            <Button>
+                                <im:ImageAwesome Height="12" Icon="Solid_Plus" Foreground="Green"/>
+                            </Button>
+                            <Button ToolTip="Редактировать" im:Awesome.Content="Solid_Edit" Foreground="Purple"/>
+                            <Button ToolTip="Удалить" im:Awesome.Content="Solid_TrashAlt" Foreground="Red"/>
                         </ToolBar>
                     </ToolBarTray>
                     <GroupBox Header="Список получателей" Margin="3">
