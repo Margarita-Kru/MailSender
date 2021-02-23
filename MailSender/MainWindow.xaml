@@ -86,7 +86,7 @@
                                   AlternatingRowBackground="#3300FFFF"
                                   ItemsSource="{x:Static data:TestData.Recipients}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" MinWidth="30"/>
+                                <DataGridTextColumn Header="ID" Binding="{Binding Id}" MinWidth="30" />
                                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*"/>
                                 <DataGridTextColumn Header="Адрес" Binding="{Binding Address}" MinWidth="120"/>
                             </DataGrid.Columns>
