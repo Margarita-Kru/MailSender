@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:im="http://schemas.fontawesome.com/icons/"
+        xmlns:t="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:MailSender"
         xmlns:data="clr-namespace:MailSender.Data"
         xmlns:m="clr-namespace:MailSender.Models"
@@ -26,7 +27,7 @@
             </StatusBarItem>
             <StatusBarItem Content="Все права защищены!"/>
         </StatusBar>
-        <TabControl>
+        <TabControl x:Name="tab">
             <TabItem Header="Списки">
             <DockPanel>
                 <ToolBarTray DockPanel.Dock="Top">
@@ -68,7 +69,7 @@
                         </ToolBar>
                         <ToolBar>
                             <TextBlock VerticalAlignment="Center" Text="Перейти в планировщик"/>
-                            <Button im:Awesome.Content="Regular_Clock" Foreground="Tan"/>
+                            <Button im:Awesome.Content="Regular_Clock" Foreground="Tan" Click="Button_Click"/>
                         </ToolBar>
                         <ToolBar Band="1" Header="Получатели">
                             <Button>
@@ -93,7 +94,7 @@
                     </GroupBox>
             </DockPanel>
             </TabItem>
-            <TabItem Header="Планировщик">
+            <TabItem Header="Планировщик" Name="tabItem">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -104,7 +105,7 @@
                             <TextBlock Text="Дата" HorizontalAlignment="Center" Margin="0,5,0,0"/>
                             <Calendar/>
                             <TextBlock Text="Время" HorizontalAlignment="Center" Margin="0,5,0,0"/>
-                            <TextBox Margin="10,0" HorizontalContentAlignment="Center"/>
+                            <t:TimePicker HorizontalContentAlignment="Center"/>
                             <StackPanel Margin="5,7">
                                 <StackPanel.Resources>
                                     <Style TargetType="Button">
