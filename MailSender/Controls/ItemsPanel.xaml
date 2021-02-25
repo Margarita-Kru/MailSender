@@ -8,9 +8,10 @@
              xmlns:data="clr-namespace:MailSender.Data"
              xmlns:m="clr-namespace:MailSender.Models"
              mc:Ignorable="d"
-             Height="26.96" Width="337.26">
+             Height="26.96" Width="337.26"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <DockPanel>
-        <TextBlock Text="Название" Name="Header" VerticalAlignment="Center" Margin="3,0"/>
+        <TextBlock Text="{Binding Title}" VerticalAlignment="Center" Margin="3,0"/>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
             <StackPanel.Resources>
                 <Style TargetType="Button">
