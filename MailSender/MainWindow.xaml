@@ -6,6 +6,7 @@
         xmlns:im="http://schemas.fontawesome.com/icons/"
         xmlns:t="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:MailSender"
+        xmlns:controls="clr-namespace:MailSender.Controls"
         xmlns:data="clr-namespace:MailSender.Data"
         xmlns:m="clr-namespace:MailSender.Models"
         mc:Ignorable="d"
@@ -77,6 +78,9 @@
                             </Button>
                             <Button ToolTip="Редактировать" im:Awesome.Content="Solid_Edit" Foreground="Purple"/>
                             <Button ToolTip="Удалить" im:Awesome.Content="Solid_TrashAlt" Foreground="Red"/>
+                        </ToolBar>
+                        <ToolBar Band="2">
+                            <controls:ItemsPanel Title="Сервера"/>
                         </ToolBar>
                     </ToolBarTray>
                     <GroupBox Header="Список получателей" Margin="3">
