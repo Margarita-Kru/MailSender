@@ -41,9 +41,9 @@
                 <ToolBarTray DockPanel.Dock="Top">
                         <ToolBar Header="Сервера">
                             <ComboBox MaxWidth="200" Margin="27,0,0,0" MinWidth="120" SelectedIndex="0"
-                                      ItemsSource="{x:Static data:TestData.Servers}" DisplayMemberPath="Address">
+                                      ItemsSource="{Binding Servers}" DisplayMemberPath="Address">
                             </ComboBox>
-                            <Button>
+                            <Button Command="{Binding LoadServersCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <im:ImageAwesome Height="12" Icon="Solid_PlusCircle" Foreground="Green" Margin="0,0,5,0"/>
                                     <TextBlock Text="Добавить" VerticalAlignment="Center"/>
