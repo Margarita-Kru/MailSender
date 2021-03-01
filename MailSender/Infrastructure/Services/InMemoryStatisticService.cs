@@ -9,7 +9,12 @@ namespace MailSender.Infrastructure.Services
     {
         private int _SendedMailsCount;
         public int SendedMailsCount => _SendedMailsCount;
-        public void MailSended() => _SendedMailsCount++;
+        public event EventHandler SendedMailsCountChanged;
+        public void MailSended()
+        {
+            SendedMailsCountChanged?.Invoke(this, EventArgs.Empty);
+            _SendedMailsCount++;
+        }
         public int SendersCount => TestData.Senders.Count;
         public int RecipientsCount => TestData.Recipients.Count;
         private readonly Stopwatch _StopwatchTimer = Stopwatch.StartNew();
