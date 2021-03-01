@@ -23,6 +23,7 @@ namespace MailSender
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection servises)
         {
             servises.AddSingleton<MainWindowViewModel>();
+            servises.AddSingleton<StatisticViewModel>();
             servises.AddSingleton<ServersRepository>();
             servises.AddSingleton<IStatistic,InMemoryStatisticService>();
         }
