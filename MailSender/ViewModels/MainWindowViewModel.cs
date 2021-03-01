@@ -19,6 +19,9 @@ namespace MailSender.ViewModels
         private readonly IMailService _MailService;
 
         public ObservableCollection<Server> Servers { get; } = new ();
+        public ObservableCollection<Recipient> Recipients { get; } = new ();
+        public ObservableCollection<Sender> Senders { get; } = new ();
+        public ObservableCollection<Message> Messages { get; } = new ();
 
         private Server _SelectedServer;
         public Server SelectedServer 

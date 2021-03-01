@@ -36,7 +36,7 @@
             <DockPanel>
                 <ToolBarTray DockPanel.Dock="Top">
                         <ToolBar>
-                            <controls:ItemsPanel Title="Сервера" ItemTemplate="{Binding Servers}"/>
+                            <controls:ItemsPanel Title="Сервера"/>
                         </ToolBar>
                         <ToolBar Header="Отправители" Band="1">
                             <ComboBox MaxWidth="200" MinWidth="120" SelectedIndex="0"
