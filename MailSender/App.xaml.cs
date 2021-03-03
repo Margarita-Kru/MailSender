@@ -2,6 +2,7 @@
 using MailSender.Infrastructure.Services.InMemory;
 using MailSender.lib.Interfaces;
 using MailSender.lib.Service;
+using MailSender.Models;
 using MailSender.ViewModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +26,10 @@ namespace MailSender
         {
             servises.AddSingleton<MainWindowViewModel>();
             servises.AddSingleton<StatisticViewModel>();
+            servises.AddSingleton<IRepository<Server>, ServersRepository>();
+            servises.AddSingleton<IRepository<Sender>, SendersRepository>();
+            servises.AddSingleton<IRepository<Recipient>, RecipientsRepository>();
+            servises.AddSingleton<IRepository<Message>, MessagesRepository>();
             servises.AddSingleton<ServersRepository>();
             servises.AddSingleton<IStatistic,InMemoryStatisticService>();
             servises.AddSingleton<IMailService, DebugMailService>();
