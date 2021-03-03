@@ -6,10 +6,10 @@
         xmlns:im="http://schemas.fontawesome.com/icons/"
         xmlns:t="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:MailSender"
-        xmlns:controls="clr-namespace:MailSender.Controls"
+        xmlns:contr="clr-namespace:MailSender.Controls"
         xmlns:data="clr-namespace:MailSender.Data"
         xmlns:m="clr-namespace:MailSender.Models" 
-        xmlns:vm="clr-namespace:MailSender.ViewModels"
+        xmlns:vm="clr-namespace:MailSender.ViewModels" xmlns:views="clr-namespace:MailSender.Views"
         mc:Ignorable="d"
         Title="{Binding Title}"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
@@ -36,11 +36,12 @@
             <DockPanel>
                 <ToolBarTray DockPanel.Dock="Top">
                         <ToolBar>
-                            <controls:ItemsPanel Title="Сервера"/>
+                            <contr:ItemsPanel Title="Сервера"
+                                              ItemTemplate="{Binding Servers}"/>
                         </ToolBar>
                         <ToolBar Header="Отправители" Band="1">
                             <ComboBox MaxWidth="200" MinWidth="120" SelectedIndex="0"
-                                      ItemsSource="{x:Static data:TestData.Senders}">
+                                      ItemsSource="{Binding Senders}">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate DataType="m:Sender">
                                         <StackPanel Orientation="Horizontal">
@@ -74,17 +75,9 @@
                         </ToolBar>
                     </ToolBarTray>
                     <GroupBox Header="Список получателей" Margin="3">
-                        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" 
-                                  GridLinesVisibility="Vertical"
-                                  VerticalGridLinesBrush="DarkGray" 
-                                  AlternatingRowBackground="#3300FFFF"
-                                  ItemsSource="{x:Static data:TestData.Recipients}">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" Binding="{Binding Id}" MinWidth="30" />
-                                <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*"/>
-                                <DataGridTextColumn Header="Адрес" Binding="{Binding Address}" MinWidth="120"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <Grid>
+                            <views:RecipientsView/>
+                        </Grid>
                     </GroupBox>
             </DockPanel>
             </TabItem>
@@ -218,7 +211,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <GroupBox Grid.Column="0" Header="Письма">
-                        <ListBox MinWidth="120" ItemsSource="{x:Static data:TestData.Messages}"
+                        <ListBox MinWidth="120" ItemsSource="{Binding Messages}"
                                  DisplayMemberPath="Title"
                                  Name ="MessageList"/>
                     </GroupBox>

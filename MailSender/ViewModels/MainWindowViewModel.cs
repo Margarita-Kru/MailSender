@@ -42,11 +42,11 @@ namespace MailSender.ViewModels
             set => Set(ref _SelectedSender, value); 
         }
         #region Команды
-        private ICommand _LoadServersCommand;
-        public ICommand LoadServersCommand => _LoadServersCommand ??= new LambdaCommand(OnLoadServersCommandExecuted,CanLoadServersCommandExecute);
+        private ICommand _LoadDataCommand;
+        public ICommand LoadDataCommand => _LoadDataCommand ??= new LambdaCommand(OnLoadDataCommandExecuted,CanLoadDataCommandExecute);
         
-        private bool CanLoadServersCommandExecute(object p) => Servers.Count==0;
-        private void OnLoadServersCommandExecuted(object p) => LoadServers();
+        private bool CanLoadDataCommandExecute(object p) => Servers.Count==0;
+        private void OnLoadDataCommandExecuted(object p) => LoadData();
 
         private ICommand _SendEmailCommand;
         public ICommand SendEmailCommand => _SendEmailCommand ??= new LambdaCommand(OnSendEmailCommandExecuted, CanSendEmailCommandExecute);
@@ -76,7 +76,7 @@ namespace MailSender.ViewModels
             foreach (var item in rep.GetAll())
                 collection.Add(item);
         }
-        private void LoadServers()
+        private void LoadData()
         {
             Load(Servers, _Servers);
             Load(Senders, _Senders);
