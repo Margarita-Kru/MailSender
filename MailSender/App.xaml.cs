@@ -1,5 +1,5 @@
-﻿using MailSender.Infrastructure;
-using MailSender.Infrastructure.Services;
+﻿using MailSender.Infrastructure.Services;
+using MailSender.Infrastructure.Services.InMemory;
 using MailSender.lib.Interfaces;
 using MailSender.lib.Service;
 using MailSender.ViewModels;

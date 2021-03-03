@@ -7,7 +7,7 @@ namespace MailSender.Infrastructure.Services
     {
         IEnumerable<T> GetAll();
         T GetbyId(int Id);
-        void Add(T item);
+        int Add(T item);
         void Update(T item);
         bool Remove(int Id);
     }
