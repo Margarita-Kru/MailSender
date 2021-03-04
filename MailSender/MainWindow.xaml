@@ -97,7 +97,7 @@
                             <TextBlock Text="Дата" HorizontalAlignment="Center" Margin="0,5,0,0"/>
                             <Calendar/>
                             <TextBlock Text="Время" HorizontalAlignment="Center" Margin="0,5,0,0"/>
-                            <t:TimePicker HorizontalContentAlignment="Center"/>
+                            <TextBox/>
                             <StackPanel Margin="5,7">
                                 <StackPanel.Resources>
                                     <Style TargetType="Button">
