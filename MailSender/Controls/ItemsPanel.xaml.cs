@@ -98,7 +98,7 @@ namespace MailSender.Controls
         }
         #endregion
         #region DisplayMemberPath:string - имя отображаемого свойства
-        private readonly DependencyProperty DisplayMemberPathProperty =
+        public static readonly DependencyProperty DisplayMemberPathProperty =
             DependencyProperty.Register(
                 nameof(DisplayMemberPath),
                 typeof(string),

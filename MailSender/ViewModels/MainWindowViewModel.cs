@@ -29,19 +29,44 @@ namespace MailSender.ViewModels
         public ObservableCollection<Sender> Senders { get; } = new ();
         public ObservableCollection<Message> Messages { get; } = new ();
 
-        private Server _SelectedServer;
-        public Server SelectedServer 
-        { 
-            get => _SelectedServer; 
-            set => Set(ref _SelectedServer, value); 
-        }
-        private Sender _SelectedSender; 
-        public Sender SelectedSender 
-        { 
-            get => _SelectedSender; 
-            set => Set(ref _SelectedSender, value); 
-        }
         #region Команды
+
+        #region SelectedRecipient: Recipient - выбранный получатель
+        private Recipient _SelectedRecipient;
+        public Recipient SelectedRecipient
+        {
+            get => _SelectedRecipient;
+            set => Set(ref _SelectedRecipient, value);
+        }
+        #endregion
+
+        #region SelectedSender: Sender - выбранный отправитель
+        private Sender _SelectedSender;
+        public Sender SelectedSender
+        {
+            get => _SelectedSender;
+            set => Set(ref _SelectedSender, value);
+        }
+        #endregion
+
+        #region SelectedMessage: Message - выбранное письмо
+        private Message _SelectedMessage;
+        public Message SelectedMessage
+        {
+            get => _SelectedMessage;
+            set => Set(ref _SelectedMessage, value);
+        }
+        #endregion
+
+        #region SelectedServer: Server - выбранный сервер
+        private Server _SelectedServer;
+        public Server SelectedServer
+        {
+            get => _SelectedServer;
+            set => Set(ref _SelectedServer, value);
+        }
+        #endregion
+
         private ICommand _LoadDataCommand;
         public ICommand LoadDataCommand => _LoadDataCommand ??= new LambdaCommand(OnLoadDataCommandExecuted,CanLoadDataCommandExecute);
         
@@ -56,6 +81,7 @@ namespace MailSender.ViewModels
         {
             _MailService.SendEmail("Иванов", "Петров", "Тема", "Тело письма");
         }
+
         #endregion
         public MainWindowViewModel(
             IRepository<Server> Servers, 
