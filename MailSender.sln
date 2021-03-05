@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestWpf", "Tests\TestWpf\Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailSender.lib", "MailSender.lib\MailSender.lib.csproj", "{781BC603-DC4F-4B13-9CBD-D6A8DF561F04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender.Tests", "Tests\MailSender.Tests\MailSender.Tests.csproj", "{06354C8B-B0F0-4BB6-B1EB-8EFDEBABAC26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailSender.Tests", "Tests\MailSender.Tests\MailSender.Tests.csproj", "{06354C8B-B0F0-4BB6-B1EB-8EFDEBABAC26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender.lib.Tests", "Tests\MailSender.lib.Tests\MailSender.lib.Tests.csproj", "{245B32D0-2558-4FEE-824A-306BD9F1F6F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailSender.lib.Tests", "Tests\MailSender.lib.Tests\MailSender.lib.Tests.csproj", "{245B32D0-2558-4FEE-824A-306BD9F1F6F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactorialOfNumber", "Tests\FactorialOfNumber\FactorialOfNumber.csproj", "{95984703-3E19-42EA-8EE9-6AB71ADD8907}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{245B32D0-2558-4FEE-824A-306BD9F1F6F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{245B32D0-2558-4FEE-824A-306BD9F1F6F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{245B32D0-2558-4FEE-824A-306BD9F1F6F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95984703-3E19-42EA-8EE9-6AB71ADD8907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95984703-3E19-42EA-8EE9-6AB71ADD8907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95984703-3E19-42EA-8EE9-6AB71ADD8907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95984703-3E19-42EA-8EE9-6AB71ADD8907}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +62,7 @@ Global
 		{39097F4C-AAA9-4F0F-8D33-41DA0D0A5F84} = {3FB16C58-9C50-4F34-A57C-8BAB84AB83F7}
 		{06354C8B-B0F0-4BB6-B1EB-8EFDEBABAC26} = {3FB16C58-9C50-4F34-A57C-8BAB84AB83F7}
 		{245B32D0-2558-4FEE-824A-306BD9F1F6F4} = {3FB16C58-9C50-4F34-A57C-8BAB84AB83F7}
+		{95984703-3E19-42EA-8EE9-6AB71ADD8907} = {3FB16C58-9C50-4F34-A57C-8BAB84AB83F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDA91545-6E26-4D70-881E-DB24B023CD90}
