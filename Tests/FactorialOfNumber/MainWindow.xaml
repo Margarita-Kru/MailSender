@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="340" Width="560">
     <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
@@ -16,10 +27,18 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Введите число, факториал которого нужно вычислить:" HorizontalAlignment="Center" VerticalAlignment="Center"
-                   FontSize="14" Margin="10" Grid.Row="0"/>
-        <TextBox  Grid.Row="1" Margin="140,21,140,20"/>
-        <Button Height="54" Width="237" Grid.Row="2" Content="Вычислить!" FontSize="14" FontWeight="Bold"/>
-        <TextBox Grid.Row="3" Margin="140,31,140,10"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="Введите число:" Height="25" Margin="40,0,0,0" Width="Auto"/>
+            <TextBox x:Name="number_TextBlock" Width="265" Height="35" Margin="10,0,0,0"/>
+        </StackPanel>
+        <Button Height="54" Width="237" Grid.Row="1" Content="Вычислить!" FontSize="14" FontWeight="Bold" Click="Decide_Click"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock  Text="Факториал числа:" Width="Auto" TextAlignment="Center" Height="22" Margin="10"/>
+            <TextBox x:Name="Factorial_TextBox" Width="400" Height="46"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <TextBlock  Text="Сумма чисел до N:" Width="Auto" TextAlignment="Center" Height="22" Margin="6"/>
+            <TextBox x:Name="Sum_TextBox" Width="400" Height="46"/>
+        </StackPanel>
     </Grid>
 </Window>

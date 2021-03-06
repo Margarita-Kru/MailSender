@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:contr="clr-namespace:MailSender.Controls"
+        xmlns:c="clr-namespace:MailSender.Controls"
         xmlns:m="clr-namespace:MailSender.Models"
         xmlns:views="clr-namespace:MailSender.Views"
         mc:Ignorable="d"
@@ -33,8 +33,10 @@
             <DockPanel>
                 <ToolBarTray DockPanel.Dock="Top">
                         <ToolBar>
-                            <contr:ItemsPanel Title="Сервера"
-                                              ItemTemplate="{Binding Servers}"/>
+                            <c:ItemsPanel Title="Сервера" ItemSource="{Binding Servers}" AddNewItemCommand=""
+                                          EditItemCommand=""
+                                          RemoveItemCommand=""
+                                          SelectedItem="{Binding SelectedServer}"/>
                         </ToolBar>
                         <ToolBar Header="Отправители" Band="1">
                             <ComboBox MaxWidth="200" MinWidth="120" SelectedIndex="0"

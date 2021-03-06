@@ -1,28 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Threading;
 
 namespace FactorialOfNumber
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow() => InitializeComponent();
+        static int Sum(int n)
         {
-            InitializeComponent();
+            int sum = 0;
+            for(int i=0;i<=n;i++)
+                sum += i;
+            return sum;
+        }
+        static long Factorial(long x)
+        {
+            if (x == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return x * Factorial(x - 1);
+            }
+        }
+        private void Decide_Click(object sender, RoutedEventArgs e)
+        {
+            int number = Convert.ToInt32(number_TextBlock.Text);
+            Factorial_TextBox.Text = (Factorial(number)).ToString();
+            Sum_TextBox.Text = (Sum(number)).ToString();
         }
     }
 }
