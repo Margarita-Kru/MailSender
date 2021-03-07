@@ -10,11 +10,9 @@ namespace FactorialOfNumber
         private void Sum(int n)
         {
             int sum = 0;
-            for(int i=0;i<=n;i++)
+            for (int i = 0; i <= n; i++)
                 sum += i;
-            var Sum_work_tread_id = Thread.CurrentThread.ManagedThreadId;
-            Sum_TextBox.Dispatcher.Invoke(()=>Sum_TextBox.Text = sum.ToString());
-            
+            Sum_TextBox.Dispatcher.Invoke(() => Sum_TextBox.Text = sum.ToString());
 
         }
         static long Factorial(long x)
@@ -26,20 +24,13 @@ namespace FactorialOfNumber
         }
         private void Decide_Click(object sender, RoutedEventArgs e)
         {
-            int number = Convert.ToInt32(number_TextBlock.Text);
+            int number = Convert.ToInt32(number_TextBox.Text);
             var sum_thread = new Thread(() => Sum(number));
-            var work_tread_id = Thread.CurrentThread.ManagedThreadId;
             sum_thread.Start();
-            //var factorial_return_thread = new Thread(() => FactorialReturn(number));
-            //sum_thread.Start();
+
+            var factorial_return_thread = new Thread(() => FactorialReturn(number));
+            factorial_return_thread.Start();
         }
-        private void FactorialReturn(int number)
-        {
-            Sum_TextBox.Dispatcher.Invoke(() =>
-            {
-                var sum_work_tread_id = Thread.CurrentThread.ManagedThreadId;
-                return Sum_TextBox.Text = Factorial(number).ToString();
-            });
-        }
+        private void FactorialReturn(int number) => Factorial_TextBox.Dispatcher.Invoke(() => Factorial_TextBox.Text = Factorial(number).ToString());
     }
 }

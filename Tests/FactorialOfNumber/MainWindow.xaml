@@ -29,7 +29,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <TextBlock Text="Введите число:" Height="25" Margin="40,0,0,0" Width="Auto"/>
-            <TextBox x:Name="number_TextBlock" Width="265" Height="35" Margin="10,0,0,0"/>
+            <TextBox x:Name="number_TextBox" Width="265" Height="35" Margin="10,0,0,0"/>
         </StackPanel>
         <Button Height="54" Width="237" Grid.Row="1" Content="Вычислить!" FontSize="14" FontWeight="Bold" Click="Decide_Click"/>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
