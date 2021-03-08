@@ -6,14 +6,22 @@
         xmlns:im="http://schemas.fontawesome.com/icons/"
         xmlns:t="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:MailSender"
+        xmlns:controls="clr-namespace:MailSender.Controls"
         xmlns:data="clr-namespace:MailSender.Data"
-        xmlns:m="clr-namespace:MailSender.Models"
+        xmlns:m="clr-namespace:MailSender.Models" 
+        xmlns:vm="clr-namespace:MailSender.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <DockPanel>
+        Title="{Binding Title}"
+        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
+        Height="450" Width="800">
+    
+    <!--<Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>-->
+            <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
-                <MenuItem Header="Выход" Click="Exit_Click"/>
+                <MenuItem Header="Выход" Command="{StaticResource CloseAppCommand}"/>
             </MenuItem>
             <MenuItem Header="Справка">
                 <MenuItem Header="Помощь"/>
@@ -25,24 +33,15 @@
             <StatusBarItem DockPanel.Dock="Right">
                 <ResizeGrip/>
             </StatusBarItem>
-            <StatusBarItem Content="Все права защищены!"/>
+            <StatusBarItem Content="{Binding Status}"/>
         </StatusBar>
         <TabControl x:Name="tab">
             <TabItem Header="Списки">
             <DockPanel>
                 <ToolBarTray DockPanel.Dock="Top">
-                        <ToolBar Header="Сервера">
-                            <ComboBox MaxWidth="200" Margin="27,0,0,0" MinWidth="120" SelectedIndex="0"
-                                      ItemsSource="{x:Static data:TestData.Servers}" DisplayMemberPath="Address">
-                            </ComboBox>
-                            <Button>
-                                <StackPanel Orientation="Horizontal">
-                                    <im:ImageAwesome Height="12" Icon="Solid_PlusCircle" Foreground="Green" Margin="0,0,5,0"/>
-                                    <TextBlock Text="Добавить" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Button>
-                            <Button ToolTip="Редактировать" im:Awesome.Content="Solid_Edit" Foreground="Purple"/>
-                            <Button ToolTip="Удалить" im:Awesome.Content="Solid_TrashAlt" Foreground="Red"/>
+                        <ToolBar Band="0">
+                            <controls:ItemsPanel Title="{Binding Text,ElementName=Test}"/>
+                            <TextBox Name="Test" Text="Сервера"/>
                         </ToolBar>
                         <ToolBar Header="Отправители" Band="1">
                             <ComboBox MaxWidth="200" MinWidth="120" SelectedIndex="0"
@@ -114,7 +113,7 @@
                                     </Style>
                                 </StackPanel.Resources>
                                 <Button Content="Запланировать"/>
-                                <Button Content="Отправить"/>
+                                <Button Content="Отправить" Command="{Binding SendEmailCommand}"/>
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
@@ -241,7 +240,9 @@
                     </GroupBox>
                 </Grid>
             </TabItem>
-            <TabItem Header="Статистика"></TabItem>
+            <TabItem Header="Статистика" xmlns:v="clr-namespace:MailSender.Views">
+                <v:StatisticView/>
+            </TabItem>
         </TabControl>
     </DockPanel>
 </Window>
