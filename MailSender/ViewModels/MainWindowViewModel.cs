@@ -79,7 +79,8 @@ namespace MailSender.ViewModels
         private bool CanSendEmailCommandExecute(object p) => Servers.Count == 0;
         private void OnSendEmailCommandExecuted(object p)
         {
-            _MailService.SendEmail("Иванов", "Петров", "Тема", "Тело письма");
+            var sender = _MailService.GetSender("smtp.yandex.ru",25,true,"login","password");
+            sender.Send("Иванов", "Петров", "Тема", "Тело письма");
         }
 
         #endregion
