@@ -6,6 +6,10 @@ namespace TestConsole
     class Program
     {
         const int n = 3;
+        public static int[,] A;
+        public static int[,] B;
+        public static int[,] C;
+
         static int [,] NewMatrix(bool f)
         {
             int[,] A = new int[n, n];
@@ -21,7 +25,7 @@ namespace TestConsole
                 }
             return A;
         }
-        static int[,] Multi(int [,] A, int[,] B, int [,] C)
+        static int[,] Multi(int [,] A, int[,] B)
         {
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < n; j++)
@@ -43,13 +47,24 @@ namespace TestConsole
                 Console.WriteLine();
             }
         }
+        public static async void RunAsync()
+        {
+            try
+            {
+                await Task.Run(() => Multi(A, B));
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
         static void Main(string[] args)
         {
-            int [,] A = NewMatrix(false);
-            int [,] B = NewMatrix(false);
-            int[,] C = NewMatrix(true);
-
-            Multi(A, B, C);
+            A = NewMatrix(false);
+            B = NewMatrix(false);
+            C = NewMatrix(true);
+            RunAsync();
+            Console.WriteLine("Произведение массивов А и В:");
             print(C);
             Console.ReadKey();
         }
