@@ -20,17 +20,23 @@
                     <Setter Property="BorderThickness" Value="0"/>
                 </Style>
             </StackPanel.Resources>
-            <Button>
+            <Button Command="{Binding AddNewItemCommand,RelativeSource={RelativeSource AncestorType=local:ItemsPanel}}">
                 <StackPanel Orientation="Horizontal">
                     <im:ImageAwesome Height="12" Icon="Solid_PlusCircle" Foreground="Green" Margin="0,0,5,0"/>
                     <TextBlock Text="Добавить" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
-            <Button ToolTip="Редактировать" im:Awesome.Content="Solid_Edit" Foreground="Purple"/>
-            <Button ToolTip="Удалить" im:Awesome.Content="Solid_TrashAlt" Foreground="Red"/>
+            <Button ToolTip="Редактировать" im:Awesome.Content="Solid_Edit" Foreground="Purple"
+                    Command="{Binding EditItemCommand,RelativeSource={RelativeSource AncestorType=local:ItemsPanel}}"
+                    CommandParameter="{Binding SelectedItem,RelativeSource={RelativeSource AncestorType=local:ItemsPanel}}"/>
+            <Button ToolTip="Удалить" im:Awesome.Content="Solid_TrashAlt" Foreground="Red"
+                    Command="{Binding RemoveItemCommand,RelativeSource={RelativeSource AncestorType=local:ItemsPanel}}"
+                    CommandParameter="{Binding SelectedItem,RelativeSource={RelativeSource AncestorType=local:ItemsPanel}}"/>
         </StackPanel>
         <ComboBox SelectedIndex="0" Margin="3,0" VerticalAlignment="Center"
-                  ItemsSource="{x:Static data:TestData.Servers}" DisplayMemberPath="Address">
-        </ComboBox> 
+                  ItemsSource="{Binding ItemSource,RelativeSource={RelativeSource AncestorType=local:ItemsPanel}}"
+                  SelectedItem="{Binding SelectedItem,RelativeSource={RelativeSource AncestorType=local:ItemsPanel}}"
+                  ItemTemplate="{Binding ItemTemplate,RelativeSource={RelativeSource AncestorType=local:ItemsPanel}}"
+                  DisplayMemberPath="{Binding DisplayMemberPath,RelativeSource={RelativeSource AncestorType=local:ItemsPanel}}"/>
     </DockPanel>
 </UserControl>
