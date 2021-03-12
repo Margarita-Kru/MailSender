@@ -1,8 +1,10 @@
 ﻿using MailSender.lib.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace MailSender.lib
 {
@@ -47,6 +49,26 @@ namespace MailSender.lib
                 };
                 client.Send(message);
             }
+            public async Task SendAsync(string SenderAddress, string RecipientAddress, string Subject, string Body, CancellationToken Cancel = default)
+            {
+                var from = new MailAddress(SenderAddress);
+                var to = new MailAddress(RecipientAddress);
+                using var message = new MailMessage(from, to)
+                {
+                    Subject = Subject,
+                    Body = Body
+                };
+                using var client = new SmtpClient(_Server, _Port)
+                {
+                    EnableSsl = _SSL,
+                    Credentials = new NetworkCredential
+                    {
+                        UserName = _Login,
+                        Password = _Password
+                    }
+                };
+                await client.SendMailAsync(message, Cancel).ConfigureAwait(false);
+            }
 
             public void Send(string SenderAddress, IEnumerable<string> RecipientAddresses, string Subject, string Body)
             {
@@ -58,6 +80,22 @@ namespace MailSender.lib
             {
                 foreach (var address in RecipientAddresses)
                 ThreadPool.QueueUserWorkItem(_=> Send(SenderAddress, address, Subject, Body));
+            }
+
+            public async Task SendAsync(string SenderAddress, IEnumerable<string> RecipientAddresses, string Subject, string Body, CancellationToken Cancel = default)
+            {
+                foreach (var address in RecipientAddresses)
+                {
+                    Cancel.ThrowIfCancellationRequested();
+                    await SendAsync(SenderAddress, address, Subject, Body, Cancel).ConfigureAwait(false);
+                }
+            }
+
+            public async Task SendParallelAsync(string SenderAddress, IEnumerable<string> RecipientAddresses, string Subject, string Body, CancellationToken Cancel = default)
+            {
+                Cancel.ThrowIfCancellationRequested();
+                var tasks = RecipientAddresses.Select(recipient_address => SendAsync(SenderAddress, RecipientAddresses, Subject, Body, Cancel));
+                await Task.WhenAll(tasks).ConfigureAwait(false);
             }
         }
     }
