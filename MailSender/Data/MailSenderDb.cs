@@ -1,14 +1,9 @@
-﻿using MailSender.Models;
+﻿using MailSender.lib.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MailSender.Data
 {
-     public class MailSenderDb: DbContext
+    public class MailSenderDb: DbContext
     {
         public DbSet<Sender> Senders { get; set; }
         public DbSet<Recipient> Recipients { get; set; }

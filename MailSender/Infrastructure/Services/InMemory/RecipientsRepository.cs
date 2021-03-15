@@ -1,4 +1,4 @@
-﻿using MailSender.Models;
+﻿using MailSender.lib.Entities;
 using System.Linq;
 
 namespace MailSender.Infrastructure.Services.InMemory

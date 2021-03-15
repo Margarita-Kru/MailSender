@@ -5,7 +5,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:c="clr-namespace:MailSender.Controls"
-        xmlns:m="clr-namespace:MailSender.Models"
+        xmlns:m="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib"
         xmlns:views="clr-namespace:MailSender.Views"
         mc:Ignorable="d"
         Title="{Binding Title}"

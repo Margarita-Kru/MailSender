@@ -1,9 +1,9 @@
-﻿using MailSender.Models.Base;
+﻿using MailSender.lib.Entities.Base;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace MailSender.Models
+namespace MailSender.lib.Entities
 {
     public class Recipient : Entity, IDataErrorInfo
     {

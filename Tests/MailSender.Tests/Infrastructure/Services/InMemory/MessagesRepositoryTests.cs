@@ -1,5 +1,5 @@
 ﻿using MailSender.Infrastructure.Services.InMemory;
-using MailSender.Models;
+using MailSender.lib.Entities;
 using System.Linq;
 using Xunit;
 

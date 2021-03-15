@@ -1,4 +1,5 @@
-﻿using MailSender.Models.Base;
+﻿using MailSender.lib.Entities.Base;
+using MailSender.lib.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
