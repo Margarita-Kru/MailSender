@@ -1,5 +1,6 @@
 ﻿using MailSender.Data;
 using MailSender.Infrastructure.Services;
+using MailSender.Infrastructure.Services.InDatabase;
 using MailSender.Infrastructure.Services.InMemory;
 using MailSender.lib;
 using MailSender.lib.Entities;
@@ -29,11 +30,14 @@ namespace MailSender
             servises.AddDbContext<MailSenderDb>(opt => opt.UseSqlServer(host.Configuration.GetConnectionString("SqlServer")));
             servises.AddSingleton<MainWindowViewModel>();
             servises.AddSingleton<StatisticViewModel>();
-            servises.AddSingleton<IRepository<Server>, ServersRepository>();
-            servises.AddSingleton<IRepository<Sender>, SendersRepository>();
-            servises.AddSingleton<IRepository<Recipient>, RecipientsRepository>();
-            servises.AddSingleton<IRepository<Message>, MessagesRepository>();
-            servises.AddSingleton<ServersRepository>();
+
+            //servises.AddSingleton<IRepository<Server>, ServersRepository>();
+            //servises.AddSingleton<IRepository<Sender>, SendersRepository>();
+            //servises.AddSingleton<IRepository<Recipient>, RecipientsRepository>();
+            //servises.AddSingleton<IRepository<Message>, MessagesRepository>();
+
+            servises.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));
+
             servises.AddSingleton<IStatistic,InMemoryStatisticService>();
 
 #if DEBUG
