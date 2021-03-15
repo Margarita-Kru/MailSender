@@ -1,15 +1,14 @@
 ﻿using MailSender.Models.Base;
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace MailSender.Models
 {
     public class Recipient : Entity, IDataErrorInfo
     {
         public string _Name;
-
-        public string this[string columnName] => throw new NotImplementedException();
-
+        [Required]
         public string Name
         {
             get => _Name;
@@ -20,6 +19,7 @@ namespace MailSender.Models
                 _Name = value;
             }
         }
+        [Required]
         public string Address { get; set; }
 
         string IDataErrorInfo.Error => null;
