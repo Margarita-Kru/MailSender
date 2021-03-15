@@ -1,9 +1,11 @@
-﻿using MailSender.Infrastructure.Services;
+﻿using MailSender.Data;
+using MailSender.Infrastructure.Services;
 using MailSender.Infrastructure.Services.InMemory;
 using MailSender.lib;
 using MailSender.lib.Interfaces;
 using MailSender.Models;
 using MailSender.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +26,7 @@ namespace MailSender
 
         private static void ConfigureServices(HostBuilderContext host, IServiceCollection servises)
         {
+            servises.AddDbContext<MailSenderDb>(opt => opt.UseSqlServer(host.Configuration.GetConnectionString("SqlServer")));
             servises.AddSingleton<MainWindowViewModel>();
             servises.AddSingleton<StatisticViewModel>();
             servises.AddSingleton<IRepository<Server>, ServersRepository>();
