@@ -7,6 +7,7 @@
         xmlns:c="clr-namespace:MailSender.Controls"
         xmlns:m="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib"
         xmlns:views="clr-namespace:MailSender.Views"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="{Binding Title}"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
@@ -33,7 +34,7 @@
             <DockPanel>
                 <ToolBarTray DockPanel.Dock="Top">
                         <ToolBar>
-                            <c:ItemsPanel Title="Сервера" ItemSource="{Binding Servers}" AddNewItemCommand=""
+                            <c:ItemsPanel Title="Сервера" ItemSource="{Binding Servers}" 
                                           EditItemCommand=""
                                           RemoveItemCommand=""
                                           SelectedItem="{Binding SelectedServer}"/>
@@ -96,7 +97,7 @@
                             <TextBlock Text="Дата" HorizontalAlignment="Center" Margin="0,5,0,0"/>
                             <Calendar/>
                             <TextBlock Text="Время" HorizontalAlignment="Center" Margin="0,5,0,0"/>
-                            <TextBox/>
+                            <xctk:TimePicker Margin="5,0"/>
                             <StackPanel Margin="5,7">
                                 <StackPanel.Resources>
                                     <Style TargetType="Button">
