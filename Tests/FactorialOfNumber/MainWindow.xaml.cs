@@ -24,7 +24,7 @@ namespace FactorialOfNumber
         }
         private void Decide_Click(object sender, RoutedEventArgs e)
         {
-            int number = Convert.ToInt32(number_TextBox.Text);
+            int.TryParse(number_TextBox.Text, out int number);
             var sum_thread = new Thread(() => Sum(number));
             sum_thread.Start();
 
