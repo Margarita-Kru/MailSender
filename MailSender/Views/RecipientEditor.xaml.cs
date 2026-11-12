@@ -1,0 +1,24 @@
+﻿using System.Windows.Controls;
+
+namespace MailSender.Views
+{
+    public partial class RecipientEditor : UserControl
+    {
+        public RecipientEditor()
+        {
+            InitializeComponent();
+        }
+
+        private void OnNameValidationError(object Sender, ValidationErrorEventArgs E)
+        {
+            if (E.Action == ValidationErrorEventAction.Added)
+            {
+                ((Control)Sender).ToolTip = E.Error.ErrorContent.ToString();
+            }
+            else
+            {
+                ((Control)Sender).ClearValue(ToolTipProperty);
+            }
+        }
+    }
+}
